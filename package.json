@@ -1,0 +1,24 @@
+{
+  "name": "smart-home-web-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vuthanhdanh080200/smart-home-web-server.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vuthanhdanh080200/smart-home-web-server/issues"
+  },
+  "homepage": "https://github.com/vuthanhdanh080200/smart-home-web-server#readme",
+  "dependencies": {
+    "mqtt": "^4.2.6",
+    "nodemon": "^2.0.7"
+  }
+}

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "local": "nodemon index.js",
+    "postinstall": "npm run build",
     "start": "node index.js"
   },
   "repository": {

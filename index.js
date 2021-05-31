@@ -7,6 +7,25 @@ http
   })
   .listen(process.env.PORT || 5000);
 
+var firebaseConfig = {
+  apiKey: "AIzaSyCEzhRWBpG6O2a-pMYGviw2PKXWXcZupQ4",
+  authDomain: "smart-home-system-3905e.firebaseapp.com",
+  projectId: "smart-home-system-3905e",
+  storageBucket: "smart-home-system-3905e.appspot.com",
+  messagingSenderId: "338524254078",
+  appId: "1:338524254078:web:7b136840e707bbbd158d2f",
+  measurementId: "G-YEWHCYX3S5",
+};
+
+var firestore = require("firebase/firestore");
+var firebase = require("firebase");
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+  console.log("Connected to firebase");
+}
+
+const db = firebase.firestore();
+
 var mqtt = require("mqtt");
 var url = "mqtt://io.adafruit.com";
 
@@ -21,14 +40,17 @@ client.on("connect", function () {
   client.subscribe(topic, function (err) {
     if (!err) {
       console.log("subscribed");
-      client.publish(topic, "HAHA");
+      db.collection("cities")
+        .doc("SF")
+        .onSnapshot((doc) => {
+          var city = doc.data();
+          //console.log(city.capital);
+          client.publish(topic, city.capital.toString());
+        });
     }
   });
 });
 
 client.on("message", function (topic, message) {
   console.log(message.toString());
-  if (message === "Button On") {
-    /// Do some thing in firebase
-  }
 });

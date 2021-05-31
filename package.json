@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/vuthanhdanh080200/smart-home-web-server#readme",
   "dependencies": {
+    "firebase": "^8.6.3",
     "http": "0.0.1-security",
     "mqtt": "^4.2.6",
     "nodemon": "^2.0.7"

@@ -52,5 +52,8 @@ client.on("connect", function () {
 });
 
 client.on("message", function (topic, message) {
-  console.log(message.toString());
+  var citiesRef = db.collection("cities");
+  citiesRef.doc("SF").set({
+    capital: message.toString(),
+  });
 });

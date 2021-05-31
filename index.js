@@ -5,13 +5,13 @@ http
     res.write("Hello World!");
     res.end();
   })
-  .listen(8080);
+  .listen(process.env.PORT || 5000);
 
 var mqtt = require("mqtt");
 var url = "mqtt://io.adafruit.com";
 
 var username = "lengochieu6102";
-var password = "aio_pZbT27oegv3sSBoFmBTyJ0KTUFZg";
+var password = "aio_OKBC45gsN3d6VlO1WUw0rlDLl9Sr";
 
 var client = mqtt.connect(url, { username: username, password: password });
 
@@ -28,4 +28,7 @@ client.on("connect", function () {
 
 client.on("message", function (topic, message) {
   console.log(message.toString());
+  if (message === "Button On") {
+    /// Do some thing in firebase
+  }
 });
